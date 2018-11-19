@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>环境选择</title>
+  <style>
+    .centerOutContainer {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      bottom: 0px;
+      right: 0px;
+      width: 100%;
+      height: 100%;
+      display: flex;
+    }
+
+    .centerContainer {
+      margin: auto;
+      width: 550px;
+      height: 320px;
+      padding: 20px 0px;
+      text-align: center;
+      border: 1px solid #e9e9e9;
+      box-shadow: #e9e9e9;
+      z-index: 111;
+      border-radius: 10px;
+    }
+
+    .centerTitle {
+      margin-bottom: 30px;
+    }
+
+    .envContainer {
+      height: 250px;
+      overflow-y: scroll;
+    }
+
+    .centerTitle {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .envItem {
+      font-size: 24px;
+      cursor: pointer;
+      margin: 0;
+      padding: 10px;
+      border-radius: 5px;
+      transition: background-color 0.5s;
+    }
+
+    .envItem:hover {
+      background-color: #f7f5f5;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="centerOutContainer" id="center">
+    <div class="centerContainer">
+      <p class="centerTitle">请选择环境</p>
+      <div class="envContainer" id="envContainer"></div>
+    </div>
+  </div>
+
+  <script>
+    const { remote } = require('electron');
+    const url = require('url');
+    const path = require('path');
+    const env = remote.require('./env');
+    const handleEnv = env.handleEnv;
+    const envList = env.envList;
+    const isDebugger = handleEnv.isDebugger();
+    const envContainer = document.getElementById('envContainer');
+
+
+    const query = url.parse(decodeURI(location.href),true).query;
+    if (query.edit) {
+      localStorage.removeItem('CURRENT_ENV');
+    }
+
+    if (localStorage.getItem('CURRENT_ENV')) {
+      document.getElementById('center').innerHTML = '加载中。。。'
+      hadnleLocation(localStorage.getItem('CURRENT_ENV'));
+    }
+
+    let html = '';
+    envList.forEach(element => {
+      html += ` <p class="envItem">${element}</p>`
+    });
+    envContainer.innerHTML = html;
+
+    envContainer.addEventListener('click', function (e) {
+      const element = e.target;
+      if (element.className === 'envItem') {
+        const curEnv = element.innerText;
+        localStorage.setItem('CURRENT_ENV', curEnv);
+        hadnleLocation(curEnv);
+      }
+    });
+
+    function hadnleLocation(curEnv) {
+      handleEnv.setEnv(curEnv);
+      let p;
+      if (isDebugger) {
+        p = url.format({
+          protocol: 'http:',
+          pathname: `localhost:${process.env.PORT}/index.html`,
+          slashes: true
+        });
+      } else {
+        p = url.format({
+          protocol: 'file:',
+          pathname: path.join(__dirname, 'render_process', `index.html`),
+          slashes: true
+        });
+      }
+      remote.getCurrentWindow().loadURL(p);
+    }
+  </script>
+
+</body>
+
+</html>
