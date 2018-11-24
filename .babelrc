@@ -1,18 +1,34 @@
 {
-  "presets": ["es2015", "react", "stage-0"],
+  "presets": [
+    "es2015",
+    "react",
+    "stage-0"
+  ],
   "plugins": [
-      "add-module-exports",
-      "transform-decorators-legacy",
-      "transform-object-rest-spread",
-      ["transform-runtime", {
+    "add-module-exports",
+    "transform-decorators-legacy",
+    "transform-object-rest-spread",
+    [
+      "transform-runtime",
+      {
         "polyfill": false,
         "regenerator": true
-      }],
-      ["import", {
-          "libraryName": "antd",
-          "libraryDirectory": "es", 
-          "style": true
-      }],
-      ["import", { "libraryName": "lodash", "libraryDirectory": "" }]
+      }
+    ],
+    [
+      "import",
+      {
+        "libraryName": "antd",
+        "libraryDirectory": "es",
+        "style": true
+      }
+    ],
+    [
+      "import",
+      {
+        "libraryName": "lodash",
+        "libraryDirectory": ""
+      }
+    ]
   ]
 }
