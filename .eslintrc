@@ -1,10 +1,7 @@
 {
   "parser": "babel-eslint",
-  "env": {
-    "commonjs": true,
-    "es6": true,
-    "node": true,
-    "browser": true
+  "rules": {
+    "strict": 0
   },
   "parserOptions": {
     "sourceType": "module",
@@ -13,5 +10,11 @@
     "ecmaFeatures": {
       "jsx": true
     }
+  },
+  "env": {
+    "commonjs": true,
+    "es6": true,
+    "node": true,
+    "browser": true
   }
 }
