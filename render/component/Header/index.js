@@ -9,9 +9,16 @@ const { Item } = Menu;
 
 class HeaderComponent extends Component {
 
-  componentDidMount() {
-    // location.hash = '/Page1';
-    // document.getElementById('Page1').click();
+  constructor(props) {
+    super(props);
+    const hash = location.hash.split('/')[1];
+    this.state = { current: hash ? hash : 'Page1' };
+  }
+
+  handleClick = (e) => {
+    this.setState({
+      current: e.key
+    });
   }
 
   render() {
@@ -22,7 +29,8 @@ class HeaderComponent extends Component {
           key="headerMenu"
           theme="dark"
           mode="horizontal"
-          defaultSelectedKeys={['Page1']}
+          selectedKeys={[this.state.current]}
+          onClick={this.handleClick}
         >
           <Item key='Page1' id="Page1">
             <Link to='/Page1'>Page1</Link>
