@@ -9,6 +9,11 @@ const { Item } = Menu;
 
 class HeaderComponent extends Component {
 
+  componentDidMount() {
+    // location.hash = '/Page1';
+    // document.getElementById('Page1').click();
+  }
+
   render() {
     return (
       <Header className='header'>
@@ -17,6 +22,7 @@ class HeaderComponent extends Component {
           key="headerMenu"
           theme="dark"
           mode="horizontal"
+          defaultSelectedKeys={['Page1']}
         >
           <Item key='Page1' id="Page1">
             <Link to='/Page1'>Page1</Link>
