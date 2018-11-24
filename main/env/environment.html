@@ -72,14 +72,14 @@
     const { remote } = require('electron');
     const url = require('url');
     const path = require('path');
-    const env = remote.require('./env');
+    const env = remote.require('./main_process/env');
     const handleEnv = env.handleEnv;
     const envList = env.envList;
     const isDebugger = handleEnv.isDebugger();
     const envContainer = document.getElementById('envContainer');
 
 
-    const query = url.parse(decodeURI(location.href),true).query;
+    const query = url.parse(decodeURI(location.href), true).query;
     if (query.edit) {
       localStorage.removeItem('CURRENT_ENV');
     }

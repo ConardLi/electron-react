@@ -13,7 +13,7 @@ export default function () {
   }
   return url.format({
     protocol: 'file:',
-    pathname: path.join(__dirname, '..', 'environment.html'),
+    pathname: path.join(__dirname, 'env/environment.html'),
     slashes: true,
     query: { debugger: build.env === "development" }
   });
