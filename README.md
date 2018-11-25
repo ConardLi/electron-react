@@ -80,3 +80,10 @@ npm run pack-mac
 npm run pack-win
 npm run pack-mac
 ```
+
+### 6.其他特性
+
+- 立即可用的 React 插件 react-router,antd
+- electron-build轻松构建
+- webpack各种loader配置
+- 默认支持 stage-0 的 ES6
