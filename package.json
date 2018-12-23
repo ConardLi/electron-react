@@ -89,8 +89,6 @@
       "main_process/",
       "render_process/",
       "node_modules/",
-      "environment.html",
-      "env.js",
       "icon.ico"
     ],
     "npmRebuild": false,
