@@ -46,5 +46,4 @@ const log = (...args) => logs.push(args.join(' '));
   app.relaunch({
     execPath: output,
   });
-  fs.writeFileSync('/Users/pengzhen/update_logs', logs.join('\n'));
 })().then(app.exit(0));
