@@ -1,5 +1,3 @@
-// const fs = require('fs-extra');
-// const path = require('path');
 const { app } = require('electron');
 
 const { spawn } = require('child_process');

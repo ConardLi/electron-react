@@ -1,17 +1,7 @@
 const fs = require('fs-extra');
 const path = require('path');
 const { app } = require('electron');
-// const util = require('util');
-
-// const [, , dmgPath, output] = process.argv;
-
-// const copy = util.promisify(fs.copy);
-// const stat = util.promisify(fs.stat);
-// const remove = util.promisify(fs.remove);
-// const exec = util.promisify(require('child_process').exec);
 const { execSync, spawn } = require('child_process');
-
-// const noop = () => {};
 
 
 const dmgAttacher = async (pathname) => {
