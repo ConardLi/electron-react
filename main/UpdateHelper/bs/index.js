@@ -1,25 +1,8 @@
-// const fs = require('fs-extra');
 const path = require('path');
 const util = require('util');
 
 
 const exec = util.promisify(require('child_process').exec);
-
-// function findSync(startPath) {
-//   const result = [];
-//   function finder(p) {
-//     const files = fs.readdirSync(p);
-//     files.forEach((val) => {
-//       const fPath = path.join(p, val);
-//       const stats = fs.statSync(fPath);
-//       if (stats.isDirectory()) finder(fPath);
-//       if (stats.isFile()) result.push(fPath);
-//     });
-//   }
-//   finder(startPath);
-//   return result;
-// }
-
 
 const bs = {
   bin: {
@@ -40,7 +23,6 @@ const bs = {
     const patchFile = path.resolve('./patchFile');
 
     await bs.diff(oldFile, newFile, patchFile);
-    // await bs.patch(oldFile, newFile, patchFile);
     newApp;
   },
 };
