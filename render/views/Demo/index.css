@@ -1,0 +1,45 @@
+:global .content {
+  padding: 50px;
+  height: 100%;
+}
+
+:global .formCon {
+  background-color: #fff;
+  padding: 50px;
+  padding-bottom: 10px;
+  width: 580px;
+  /* min-height: 300px; */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 15px;
+  border:1px solid black;
+}
+
+:global .fieldContainer {
+  width: 100px;
+  display: inline-block;
+}
+
+:global .inputContainer {
+  width: 300px;
+  display: inline-block;
+}
+
+:global .formContainer {
+  height: 80px;
+  position: relative;
+}
+
+:global .switch {
+  margin-left: 228px;
+  /* margin-left: 50%;
+  transform: translate(-50%, 0); */
+}
+
+:global .testBtn{
+  position: absolute;
+  right:-30px;
+  top:0;
+}

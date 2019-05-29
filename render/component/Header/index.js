@@ -35,6 +35,9 @@ class HeaderComponent extends Component {
           <Item key='Home' id="Home">
             <Link to='/Home'>Home</Link>
           </Item>
+          <Item key='Demo' id="Demo">
+            <Link to='/Demo'>Demo</Link>
+          </Item>
           <Item key='Antd' id="Antd">
             <Link to='/Antd'>Antd</Link>
           </Item>
