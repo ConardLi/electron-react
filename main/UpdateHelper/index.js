@@ -45,7 +45,7 @@ const Updater = {
     const build = pkg['build-config'];
     build.gid = global.device.gid;
     const host = build.env === 'production' ? 'https://xxx-prod.com/' : 'http://xxx-beta.com/';
-    const checkUrl = url.resolve(host, `/app/update/versionCheck?pid=${build.pid}&vid=${build.vid}&gid=${build.gid}`);
+    const checkUrl = url.resolve(host, `/app/update/versionCheck?appid=${build.appid}&vid=${build.version}&gid=${build.gid}`);
     return new Promise((resolve, reject) => {
       request(checkUrl, (err, response, body) => {
         Updater.CHECKING = false;

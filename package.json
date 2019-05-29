@@ -4,9 +4,8 @@
   "description": "electron-react脚手架工程",
   "main": "main.js",
   "build-config": {
-    "projectId": "electron-react",
-    "pid": "50025",
-    "vid": "5010017",
+    "appid": "001",
+    "version": "001",
     "env": "development"
   },
   "scripts": {
