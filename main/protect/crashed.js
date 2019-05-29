@@ -6,8 +6,8 @@ import { BrowserWindow, crashReporter, dialog } from 'electron';
 
 // 开启进程崩溃记录
 crashReporter.start({
-  productName: 'wcs',
-  companyName: 'blibee',
+  productName: 'electron-react',
+  companyName: 'ConardLi',
   submitURL: 'http://xxx.com',  // 上传崩溃日志的接口
   uploadToServer: false
 });
