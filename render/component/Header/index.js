@@ -12,7 +12,7 @@ class HeaderComponent extends Component {
   constructor(props) {
     super(props);
     const hash = location.hash.split('/')[1];
-    this.state = { current: hash ? hash : 'Page1' };
+    this.state = { current: hash ? hash : 'Home' };
   }
 
   handleClick = (e) => {
@@ -32,8 +32,8 @@ class HeaderComponent extends Component {
           selectedKeys={[this.state.current]}
           onClick={this.handleClick}
         >
-          <Item key='Page1' id="Page1">
-            <Link to='/Page1'>Page1</Link>
+          <Item key='Home' id="Home">
+            <Link to='/Home'>Home</Link>
           </Item>
           <Item key='Page2' id="Page2">
             <Link to='/Page2'>Page2</Link>

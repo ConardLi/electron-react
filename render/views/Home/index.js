@@ -7,7 +7,7 @@ import './index.css';
 const { Content } = Layout;
 
 @observer
-class Page1 extends React.Component {
+class Home extends React.Component {
 
   componentDidMount() {
     store.initValue();
@@ -27,4 +27,4 @@ class Page1 extends React.Component {
   }
 }
 
-export default Page1;
+export default Home;
