@@ -2,61 +2,44 @@
  * 崩溃日志，崩溃重启
  */
 
-import request from 'request';
-import os from 'os';
-import path from 'path';
-import moment from 'moment';
+import { BrowserWindow, crashReporter, dialog } from 'electron';
 
-const { app, BrowserWindow, crashReporter } = require('electron');
-const basePath = global.__dirname;
-const pkg = require(path.resolve(basePath, 'package.json'));
-
-export default function () {
-  const mainWindow = BrowserWindow.fromId(global.mainId);
-  mainWindow.webContents.on('crashed', () => {
-    crashplatformr(mainWindow);
-  });
-}
-
-function crashplatform(mainWindow) {
-  const build = pkg['build-config'];
-  const { device } = global;
-  const errorMessage = crashReporter.getLastCrashReport();
-  console.log('errorMessage', errorMessage);
-  const data = {
-    pid: build.pid,
-    appName: 'electron-react',
-    platform: os.platform() === 'darwin' ? 'Mac' : 'Win',
-    crashMsg: '程序崩潰',
-    crashStack: errorMessage || '程序崩潰',
-    deviceId: device.uuid,
-    vid: build.vid,
-    gid: device.gid,
-    crashTime: moment().format('YYYY-MM-DD HH:mm:ss.SSS'),
-    udid: device.uuid
-  };
-  let logUrl = 'www.conardLi.com';
-  const options = {
-    method: 'POST',
-    uri: logUrl,
-    body: [data],
-    json: true,
-  }
-  request(options, (err, response, body) => {
-    console.log('crashplatform', body);
-    reloadWindow(mainWindow);
-  });
-}
-
+// 开启进程崩溃记录
+crashReporter.start({
+  productName: 'wcs',
+  companyName: 'blibee',
+  submitURL: 'http://xxx.com',  // 上传崩溃日志的接口
+  uploadToServer: false
+});
 
 function reloadWindow(mainWin) {
   if (mainWin.isDestroyed()) {
     app.relaunch();
     app.exit(0);
   } else {
+    // 销毁其他窗口
     BrowserWindow.getAllWindows().forEach((w) => {
       if (w.id !== mainWin.id) w.destroy();
     });
-    mainWin.reload();
+    const options = {
+      type: 'info',
+      title: '渲染器进程崩溃',
+      message: '这个进程已经崩溃.',
+      buttons: ['重载', '关闭']
+    }
+    dialog.showMessageBox(options, (index) => {
+      if (index === 0) mainWin.reload();
+      else mainWin.close();
+    })
   }
+}
+
+
+export default function () {
+  const mainWindow = BrowserWindow.fromId(global.mainId);
+  mainWindow.webContents.on('crashed', () => {
+    const errorMessage = crashReporter.getLastCrashReport();
+    console.error('程序崩溃了！', errorMessage)
+    reloadWindow(mainWindow);
+  });
 }
