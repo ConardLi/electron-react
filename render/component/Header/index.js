@@ -35,8 +35,8 @@ class HeaderComponent extends Component {
           <Item key='Home' id="Home">
             <Link to='/Home'>Home</Link>
           </Item>
-          <Item key='Page2' id="Page2">
-            <Link to='/Page2'>Page2</Link>
+          <Item key='Antd' id="Antd">
+            <Link to='/Antd'>Antd</Link>
           </Item>
         </Menu>
       </Header>

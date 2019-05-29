@@ -24,7 +24,7 @@ const data = [{
   address: 'Sidney No. 1 Lake Park',
 }];
 
-class Page2 extends Component {
+class Antd extends Component {
 
   render() {
     return (
@@ -74,4 +74,4 @@ class Page2 extends Component {
   }
 }
 
-export default Page2;
+export default Antd;
