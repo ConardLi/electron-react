@@ -1,5 +1,5 @@
 require('./menu');
-import Updater from './UpdateHelper';
+import Updater from './update';
 import getRenderUrl from './mainUrl';
 import deviceid from './utils/deviceid.js';
 import onCrashed from './protect/crashed';

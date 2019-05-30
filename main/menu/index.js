@@ -7,7 +7,7 @@ const path = require('path');
 const BrowserWindow = electron.BrowserWindow
 const Menu = electron.Menu
 const app = electron.app
-const UpdateHelper = require('./../UpdateHelper');
+const UpdateHelper = require('./../update');
 const pkg = require(path.resolve(global.__dirname, 'package.json'));
 const build = pkg['build-config'];
 
