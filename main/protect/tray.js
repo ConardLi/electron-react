@@ -10,19 +10,22 @@ global.tray = tray;
 
 export default function createTray() {
   const mainWindow = BrowserWindow.fromId(global.mainId);
-  tray = new Tray(path.join(global.__dirname, 'icon.ico'));
+  const iconName = process.platform === 'win32' ? 'icon.ico' : 'icon.png'
+  tray = new Tray(path.join(global.__dirname, iconName));
   const contextMenu = Menu.buildFromTemplate([
-    { label: '退出', click: () => { mainWindow.destroy(); app.quit(); } },
+    {
+      label: '显示主界面', click: () => {
+        mainWindow.show();
+        mainWindow.setSkipTaskbar(false);
+      }
+    },
+    {
+      label: '退出', click: () => {
+        mainWindow.destroy();
+        app.quit();
+      }
+    },
   ])
-  tray.setToolTip('electron-react')
-  tray.setContextMenu(contextMenu)
-  tray.on('click', () => {
-    if (mainWindow.isVisible()) {
-      mainWindow.hide();
-      mainWindow.setSkipTaskbar(true);
-    } else {
-      mainWindow.show();
-      mainWindow.setSkipTaskbar(false);
-    }
-  })
+  tray.setToolTip('electron-react');
+  tray.setContextMenu(contextMenu);
 }

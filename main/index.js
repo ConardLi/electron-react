@@ -5,6 +5,7 @@ import deviceid from './utils/deviceid.js';
 import onCrashed from './protect/crashed';
 import createTray from './protect/tray';
 import autoStart from './protect/autoStart';
+import handleQuit from './protect/quit';
 
 
 const { app, BrowserWindow, ipcMain } = require('electron');
@@ -42,7 +43,8 @@ app.on('ready', () => {
     .then(() => Updater.init())
     .then(() => createWindow())
     .then(() => onCrashed())
-    .then(() => { if (process.platform === 'win32') { createTray() } })
+    .then(() => handleQuit())
+    .then(() => createTray())
     .then(() => { if (process.platform === 'win32') { autoStart() } })
 })
 
