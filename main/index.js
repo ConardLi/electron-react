@@ -2,13 +2,14 @@ require('./menu');
 import Updater from './update';
 import getRenderUrl from './mainUrl';
 import deviceid from './utils/deviceid.js';
+import handleQuit from './event/quit';
+import handleMessage from './event/message';
 import onCrashed from './protect/crashed';
 import createTray from './protect/tray';
 import autoStart from './protect/autoStart';
-import handleQuit from './protect/quit';
 
 
-const { app, BrowserWindow, ipcMain } = require('electron');
+const { app, BrowserWindow } = require('electron');
 
 let mainWindow;
 
@@ -42,6 +43,7 @@ app.on('ready', () => {
   devicePromise
     .then(() => Updater.init())
     .then(() => createWindow())
+    .then(() => handleMessage())
     .then(() => onCrashed())
     .then(() => handleQuit())
     .then(() => createTray())
@@ -52,9 +54,4 @@ app.on('activate', function () {
   if (mainWindow === null) {
     createWindow()
   }
-});
-
-
-ipcMain.on('window-inited', (event, data) => {
-  Object.assign(global, data);
 });
