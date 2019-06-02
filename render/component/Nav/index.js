@@ -33,6 +33,10 @@ class Nav extends Component {
           selectedKeys={[this.state.current]}
           onClick={this.handleClick}
         >
+          <div className='iconContainer'>
+            <img src={icon} className='icon' />
+            <span className="titleText">electron-react</span>
+          </div>
           <Item key="Home">
             <Link to='/Home'>Home</Link>
           </Item>

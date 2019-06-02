@@ -7,8 +7,16 @@
   line-height: 64px;
 }
 
+:global .ant-menu-root {
+  height: 100%;
+}
+
+:global .iconContainer {
+  height: 64px;
+}
+
 :global .icon {
-  position: absolute;
+  display: inline-block;
   left: 20px;
   top: 5px;
   height: 55px;
@@ -17,6 +25,8 @@
   padding: 2px;
 }
 
-:global .ant-menu-root {
-  height: 100%;
+:global .titleText {
+  display: inline-block;
+  font-size: 16px;
+  color: white;
 }
