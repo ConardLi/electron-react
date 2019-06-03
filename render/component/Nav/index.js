@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Layout, Menu, Button } from 'antd';
+import { Layout, Menu, Row } from 'antd';
 import { Link } from 'react-router-dom';
 import icon from '$public/image/icon.png';
 import './index.css';
@@ -23,7 +23,11 @@ class Nav extends Component {
 
   render() {
     return (
-      <div style={{ width: 220, height: '100%' }}>
+      <div style={{ width: 220, height: '100%', zIndex: 999 }}>
+        <div className='iconContainer'>
+          <img src={icon} className='icon' />
+          <span className="titleText">electron-react</span>
+        </div>
         <Menu
           defaultSelectedKeys={['1']}
           defaultOpenKeys={['sub1']}
@@ -33,10 +37,6 @@ class Nav extends Component {
           selectedKeys={[this.state.current]}
           onClick={this.handleClick}
         >
-          <div className='iconContainer'>
-            <img src={icon} className='icon' />
-            <span className="titleText">electron-react</span>
-          </div>
           <Item key="Home">
             <Link to='/Home'>Home</Link>
           </Item>

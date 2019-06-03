@@ -22,7 +22,7 @@ export default class App extends Component {
       <LocaleProvider locale={zhCN}>
         <Layout className="container">
           <Nav />
-          <Layout style={{ position: 'absolute', left: 220, right: 0, height: '100%' }}>
+          <Layout className="bodyContainer">
             <Header />
             <RouteContent />
           </Layout>

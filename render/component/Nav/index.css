@@ -7,12 +7,21 @@
   line-height: 64px;
 }
 
+:global .ant-menu-dark {
+  height: 64px;
+  line-height: 64px;
+  background: rgba(0, 21, 41, 0.9);
+}
+
 :global .ant-menu-root {
   height: 100%;
 }
 
 :global .iconContainer {
+  padding-top: 15px;
   height: 64px;
+  background: #001529;
+  -webkit-app-region: drag;
 }
 
 :global .icon {
