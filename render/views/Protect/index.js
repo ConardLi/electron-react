@@ -6,7 +6,7 @@ import { ipcRenderer } from 'electron';
 
 
 @observer
-class Demo extends React.Component {
+class Protect extends React.Component {
 
   handleCrash = () => {
     process.crash();
@@ -28,4 +28,4 @@ class Demo extends React.Component {
   }
 }
 
-export default Demo;
+export default Protect;

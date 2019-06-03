@@ -38,10 +38,10 @@ class Nav extends Component {
           onClick={this.handleClick}
         >
           <Item key="Home">
-            <Link to='/Home'>Home</Link>
+            <Link to='/Home'>主页</Link>
           </Item>
-          <Item key="Demo">
-            <Link to='/Demo'>Demo</Link>
+          <Item key="Protect">
+            <Link to='/Protect'>保护措施</Link>
           </Item>
           <Item key="Antd">
             <Link to='/Antd'>Antd</Link>
