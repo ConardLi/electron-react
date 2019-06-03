@@ -3,6 +3,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import Home from '$views/Home';
 import Antd from '$views/Antd';
 import Protect from '$views/Protect';
+import Window from '$views/Window';
 
 export default class RouteContent extends Component {
   render() {
@@ -11,6 +12,7 @@ export default class RouteContent extends Component {
         <Route exact path="/Home" component={Home} />
         <Route path="/Protect" component={Protect} />
         <Route path="/Antd" component={Antd} />
+        <Route path="/Window" component={Window} />
         <Redirect path="/" to={{ pathname: '/Home' }} />
       </Switch>
     );

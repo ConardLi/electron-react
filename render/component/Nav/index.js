@@ -40,6 +40,9 @@ class Nav extends Component {
           <Item key="Home">
             <Link to='/Home'>主页</Link>
           </Item>
+          <Item key="Window">
+            <Link to='/Window'>窗口</Link>
+          </Item>
           <Item key="Protect">
             <Link to='/Protect'>保护措施</Link>
           </Item>
