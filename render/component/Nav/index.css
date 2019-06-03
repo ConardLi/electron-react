@@ -10,7 +10,7 @@
 :global .ant-menu-dark {
   height: 64px;
   line-height: 64px;
-  background: rgba(0, 21, 41, 0.9);
+  background: rgba(0, 21, 41, 0.95);
 }
 
 :global .ant-menu-root {
