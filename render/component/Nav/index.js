@@ -44,7 +44,10 @@ class Nav extends Component {
             <Link to='/Window'>窗口</Link>
           </Item>
           <Item key="Dialog">
-            <Link to='/Dialog'>系统弹框</Link>
+            <Link to='/Dialog'>弹框</Link>
+          </Item>
+          <Item key="System">
+            <Link to='/System'>系统</Link>
           </Item>
           <Item key="Protect">
             <Link to='/Protect'>保护措施</Link>

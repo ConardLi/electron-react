@@ -4,7 +4,8 @@ import Home from '$views/Home';
 import Antd from '$views/Antd';
 import Protect from '$views/Protect';
 import Window from '$views/Window';
-import Dialog from '$views/Dialog'
+import Dialog from '$views/Dialog';
+import System from '$views/System';
 
 export default class RouteContent extends Component {
   render() {
@@ -15,6 +16,7 @@ export default class RouteContent extends Component {
         <Route path="/Antd" component={Antd} />
         <Route path="/Window" component={Window} />
         <Route path="/Dialog" component={Dialog} />
+        <Route path="/System" component={System} />
         <Redirect path="/" to={{ pathname: '/Home' }} />
       </Switch>
     );
