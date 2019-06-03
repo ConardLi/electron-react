@@ -2,9 +2,11 @@ import React from 'react';
 import { Button, Alert, Input } from 'antd';
 import electron from 'electron';
 import os from 'os';
+import fs from 'fs';
+import path from 'path';
 import styles from './index.css';
 
-const { remote, clipboard } = electron;
+const { remote, clipboard, desktopCapturer, screen, shell } = electron;
 const { app } = remote;
 
 
@@ -21,7 +23,8 @@ class System extends React.Component {
       systemPath: '',
       text: '复制我呀',
       copy: '',
-      copyVal: ''
+      copyVal: '',
+      imgMsg: ''
     }
   }
 
@@ -54,8 +57,37 @@ class System extends React.Component {
     })
   }
 
+  determineScreenShotSize = () => {
+    const screenSize = screen.getPrimaryDisplay().workAreaSize
+    const maxDimension = Math.max(screenSize.width, screenSize.height)
+    return {
+      width: maxDimension * window.devicePixelRatio,
+      height: maxDimension * window.devicePixelRatio
+    }
+  }
+
+  getImg = () => {
+    this.setState({ imgMsg: '正在截取屏幕...' })
+    const thumbSize = this.determineScreenShotSize()
+    let options = { types: ['screen'], thumbnailSize: thumbSize }
+    desktopCapturer.getSources(options, (error, sources) => {
+      if (error) return console.log(error)
+      sources.forEach((source) => {
+        if (source.name === 'Entire screen' || source.name === 'Screen 1') {
+          const screenshotPath = path.join(os.tmpdir(), 'screenshot.png')
+          fs.writeFile(screenshotPath, source.thumbnail.toPNG(), (error) => {
+            if (error) return console.log(error)
+            shell.openExternal(`file://${screenshotPath}`)
+            this.setState({ imgMsg: `截图保存到: ${screenshotPath}` })
+          })
+        }
+      })
+    })
+  }
+
+
   render() {
-    const { appPath, electron, chrome, node, v8, systemPath, text, copy, copyVal } = this.state;
+    const { appPath, electron, chrome, node, v8, systemPath, text, copy, copyVal, imgMsg } = this.state;
     return (
       <div className={styles.demoContainer}>
         <Alert className={styles.margin} message={"点击获取当前应用程序路径：" + appPath} type="info" />
@@ -78,6 +110,9 @@ class System extends React.Component {
 
         <Alert className={styles.margin} message={"点击粘贴剪切板的内容：" + copyVal} type="warning" />
         <Button className={styles.margin} onClick={this.copyVal}>粘贴</Button>
+
+        <Alert className={styles.margin} message={"点击获取屏幕截图：" + imgMsg} type="info" />
+        <Button className={styles.margin} onClick={this.getImg}>截图</Button>
       </div>
     );
   }
