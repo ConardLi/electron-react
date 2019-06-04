@@ -1,6 +1,6 @@
 # electron-react
 
-electron + react + react-router + mobx + webpack 搭建的脚手架工程 【配功能事例DEMO】
+electron + react + react-router + mobx + webpack 搭建的脚手架工程 【配功能实例DEMO】
 
 让开发electron项目更简单。
 
