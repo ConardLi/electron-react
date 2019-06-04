@@ -49,6 +49,9 @@ class Nav extends Component {
           <Item key="System">
             <Link to='/System'>系统</Link>
           </Item>
+          <Item key="Print">
+            <Link to='/Print'>打印</Link>
+          </Item>
           <Item key="Protect">
             <Link to='/Protect'>保护措施</Link>
           </Item>
