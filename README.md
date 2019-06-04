@@ -1,10 +1,8 @@
 # electron-react
 
-electron + react + react-router + mobx + webpack 搭建的脚手架工程
+electron + react + react-router + mobx + webpack 搭建的脚手架工程 【配功能事例DEMO】
 
-像开发react web项目一样开发electron
-
-![image](https://lsqimg-1257917459.cos-website.ap-beijing.myqcloud.com/electron-react.png)
+让开发electron项目更简单。
 
 ## 项目路径与命名
 
@@ -57,8 +55,6 @@ npm run pack-mac
 ### 2.调试
 
 集成环境选择模块，简单分离开发，测试，线上环境。
-
-![image](https://lsqimg-1257917459.cos-website.ap-beijing.myqcloud.com/electron-env.png)
 
 ### 3.程序保护
 
