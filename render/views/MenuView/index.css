@@ -1,0 +1,9 @@
+.demoContainer {
+  width: 80%;
+  margin: 0 auto;
+  overflow-y: scroll;
+}
+
+.margin {
+  margin-top: 15px;
+}

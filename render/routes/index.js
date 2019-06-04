@@ -8,6 +8,7 @@ import Dialog from '$views/Dialog';
 import System from '$views/System';
 import Print from '$views/Print';
 import Shell from '$views/Shell';
+import MenuView from '$views/MenuView';
 
 export default class RouteContent extends Component {
   render() {
@@ -21,6 +22,7 @@ export default class RouteContent extends Component {
         <Route path="/System" component={System} />
         <Route path="/Print" component={Print} />
         <Route path="/Shell" component={Shell} />
+        <Route path="/MenuView" component={MenuView} />
         <Redirect path="/" to={{ pathname: '/Home' }} />
       </Switch>
     );
