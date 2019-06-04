@@ -55,6 +55,9 @@ class Nav extends Component {
           <Item key="Protect">
             <Link to='/Protect'>保护措施</Link>
           </Item>
+          <Item key="Shell">
+            <Link to='/Shell'>Shell</Link>
+          </Item>
           <Item key="Antd">
             <Link to='/Antd'>Antd</Link>
           </Item>
