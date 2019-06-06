@@ -1,8 +1,7 @@
 import React from 'react';
 import { Button, Alert } from 'antd';
 import styles from './index.css';
-import { ipcRenderer } from 'electron';
-
+import { ipcRenderer, remote } from 'electron';
 
 class IPC extends React.Component {
 
@@ -36,6 +35,10 @@ class IPC extends React.Component {
     ipcRenderer.send('end-msg');
   }
 
+  handleRemote = () => {
+    remote.dialog.showErrorBox('主进程才有的dialog模块', '我是使用remote调用的')
+  }
+
 
   render() {
     const { msg } = this.state;
@@ -49,6 +52,8 @@ class IPC extends React.Component {
         <Button className={styles.margin} onClick={this.handleStart}>开始发送</Button>
         <Button className={styles.margin} onClick={this.handleEnd}>结束发送</Button>
         <Alert className={styles.margin} message={"主进程的回应：" + msg} type="warning" />
+        <Alert className={styles.margin} message="使用remote直接调用主进程模块" type="success" />
+        <Button className={styles.margin} onClick={this.handleRemote}>调用</Button>
       </div>
     );
   }
