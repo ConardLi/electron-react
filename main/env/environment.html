@@ -61,12 +61,30 @@
     html {
       background-color: white;
     }
+
+    #loading {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background: #fff;
+      z-index: 999;
+      display: flex;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      display: none;
+    }
   </style>
 </head>
 
 <body>
 
   <div class="centerOutContainer" id="center">
+    <div id="loading">
+      <img src='./loading.gif' width="300" />
+    </div>
     <div class="centerContainer">
       <p class="centerTitle">请选择环境</p>
       <div class="envContainer" id="envContainer"></div>
@@ -90,7 +108,7 @@
     }
 
     if (localStorage.getItem('CURRENT_ENV')) {
-      document.getElementById('center').innerHTML = '加载中。。。'
+      document.getElementById('loading').style.display = 'flex';
       hadnleLocation(localStorage.getItem('CURRENT_ENV'));
     }
 
