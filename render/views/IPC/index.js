@@ -3,12 +3,18 @@ import { Button, Alert } from 'antd';
 import styles from './index.css';
 import { ipcRenderer, remote } from 'electron';
 
+const { getGlobal } = remote;
+
 class IPC extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      msg: ''
+      msg: '',
+      mainId: '',
+      dirname: '',
+      deviecMac: '',
+      myField: null
     }
   }
 
@@ -39,9 +45,22 @@ class IPC extends React.Component {
     remote.dialog.showErrorBox('主进程才有的dialog模块', '我是使用remote调用的')
   }
 
+  handleReadGlobal = () => {
+    const mainId = getGlobal('mainId')
+    const dirname = getGlobal('__dirname')
+    const deviecMac = getGlobal('device').mac;
+    const myField = getGlobal('myField');
+    this.setState({ mainId, dirname, deviecMac, myField });
+  }
+
+  changeGloable = () => {
+    getGlobal('myField').name = 'code秘密花园';
+    this.setState({ myField: getGlobal('myField') });
+  }
+
 
   render() {
-    const { msg } = this.state;
+    const { msg, mainId, dirname, deviecMac, myField } = this.state;
     return (
       <div className={styles.demoContainer}>
         <Alert className={styles.margin} message="点击向主进程发送【异步】消息" type="info" />
@@ -54,6 +73,13 @@ class IPC extends React.Component {
         <Alert className={styles.margin} message={"主进程的回应：" + msg} type="warning" />
         <Alert className={styles.margin} message="使用remote直接调用主进程模块" type="success" />
         <Button className={styles.margin} onClick={this.handleRemote}>调用</Button>
+        <Alert className={styles.margin} message={`点击读取主进程存储的全局信息`} type="success" />
+        {mainId && <Alert className={styles.margin} message={`主窗口ID【${mainId}】`} type="success" />}
+        {dirname && <Alert className={styles.margin} message={`主进程入口目录【${dirname}】`} type="success" />}
+        {deviecMac && <Alert className={styles.margin} message={`设备mac地址【${deviecMac}】`} type="success" />}
+        {myField && <Alert className={styles.margin} message={`自定义属性【${myField.name}】`} type="success" />}
+        <Button className={styles.margin} onClick={this.handleReadGlobal}>读取</Button>
+        <Button className={styles.margin} onClick={this.changeGloable}>改变共享数据</Button>
       </div>
     );
   }
