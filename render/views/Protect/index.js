@@ -1,11 +1,9 @@
 import React from 'react';
 import { Button, Alert } from 'antd';
-import { observer } from 'mobx-react';
 import styles from './index.css';
 import { ipcRenderer } from 'electron';
 
 
-@observer
 class Protect extends React.Component {
 
   handleCrash = () => {
