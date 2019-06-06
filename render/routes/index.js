@@ -9,6 +9,7 @@ import System from '$views/System';
 import Print from '$views/Print';
 import Shell from '$views/Shell';
 import MenuView from '$views/MenuView';
+import IPC from '$views/IPC';
 
 export default class RouteContent extends Component {
   render() {
@@ -23,6 +24,7 @@ export default class RouteContent extends Component {
         <Route path="/Print" component={Print} />
         <Route path="/Shell" component={Shell} />
         <Route path="/MenuView" component={MenuView} />
+        <Route path="/IPC" component={IPC} />
         <Redirect path="/" to={{ pathname: '/Home' }} />
       </Switch>
     );

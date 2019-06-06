@@ -96,7 +96,41 @@ function createWindowTrans() {
   });
 }
 
+function getSyncMsg() {
+  ipcMain.on('sync-render', (event, data) => {
+    console.log(data);
+    event.sender.send('main-msg', '主进程收到了渲染进程的【异步】消息！')
+  });
+}
 
+function getAsyncMsg() {
+  ipcMain.on('async-render', (event, data) => {
+    console.log(data);
+    event.returnValue = '主进程收到了渲染进程的【同步】消息！';
+  });
+}
+
+function sendMsg() {
+
+  let i = 0;
+  const mainWindow = BrowserWindow.fromId(global.mainId);
+  ipcMain.on('start-msg', (event, data) => {
+    console.log('开始定时向渲染进程发送消息！');
+    global.sendMsg = true;
+  });
+
+  ipcMain.on('end-msg', (event, data) => {
+    console.log('结束向渲染进程发送消息！');
+    global.sendMsg = false;
+  });
+
+  setInterval(() => {
+    if (global.sendMsg) {
+      mainWindow.webContents.send('main-msg', `ConardLi【${i++}】`)
+    }
+  }, 200);
+
+}
 
 
 export default function handleMessage() {
@@ -107,4 +141,7 @@ export default function handleMessage() {
   createNoBarWindowWithButton();
   createWindowDrag();
   createWindowTrans();
+  getSyncMsg();
+  getAsyncMsg();
+  sendMsg();
 }

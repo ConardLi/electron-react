@@ -43,6 +43,9 @@ class Nav extends Component {
           <Item key="Window">
             <Link to='/Window'>窗口</Link>
           </Item>
+          <Item key="IPC">
+            <Link to='/IPC'>进程通信</Link>
+          </Item>
           <Item key="Dialog">
             <Link to='/Dialog'>弹框</Link>
           </Item>
