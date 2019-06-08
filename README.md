@@ -83,3 +83,8 @@ npm run pack-mac
 - electron-build轻松构建
 - webpack各种loader配置
 - 默认支持 stage-0 的 ES6
+
+
+### 7.上手可用的DEMO
+
+窗口、通信、菜单、系统、弹框、打印、shell
