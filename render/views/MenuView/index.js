@@ -53,7 +53,7 @@ const menus = [
   }
 ]
 
-class Shell extends React.Component {
+class MenuView extends React.Component {
 
   componentDidMount() {
     let m = Menu.buildFromTemplate(menus)
@@ -85,4 +85,4 @@ class Shell extends React.Component {
   }
 }
 
-export default Shell;
+export default MenuView;
