@@ -80,7 +80,7 @@
   },
   "build": {
     "productName": "electron-react",
-    "appId": "ptint-clinet",
+    "appId": "electron-react",
     "asar": false,
     "files": [
       "package.json",
