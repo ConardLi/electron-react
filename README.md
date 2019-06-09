@@ -4,6 +4,8 @@ electron + react + react-router + mobx + webpack 搭建的脚手架工程 【配
 
 让开发electron项目更简单。
 
+[](./capture.png)
+
 ## 项目路径与命名
 
 ```
